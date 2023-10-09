@@ -15,7 +15,7 @@ class Snake {
         head_y(grid_height / 2) {}
 
   void Update();
-
+  void UpdateLevel();
   void GrowBody();
   bool SnakeCell(int x, int y);
 

@@ -6,6 +6,7 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "wall.h"
 
 class Game {
  public:
@@ -14,10 +15,14 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  int GetLevel() const;
+  void LevelUp();
 
  private:
   Snake snake;
+  Walls walls;
   SDL_Point food;
+  bool running{false};
 
   std::random_device dev;
   std::mt19937 engine;
@@ -25,6 +30,7 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
+  int level{1};
 
   void PlaceFood();
   void Update();

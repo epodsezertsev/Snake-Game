@@ -17,7 +17,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   Uint32 frame_end;
   Uint32 frame_duration;
   int frame_count = 0;
-  bool running = true;
+  running = true;
 
   while (running) {
     frame_start = SDL_GetTicks();
@@ -25,7 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, food, walls);
 
     frame_end = SDL_GetTicks();
 
@@ -36,7 +36,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(score, frame_count, level);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -55,9 +55,13 @@ void Game::PlaceFood() {
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
+    // Creating an SDL point to test against the walls.
+    SDL_Point testing_cell{
+      static_cast<int>(x * 20),
+      static_cast<int>(y * 20)};
+    // Check that the location is not occupied by a snake item or a wall before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
+    if (!snake.SnakeCell(x, y) && !walls.IsWall(testing_cell)) {
       food.x = x;
       food.y = y;
       return;
@@ -66,8 +70,13 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
+  SDL_Point testing_cell{
+    static_cast<int>(snake.head_x * 20),
+    static_cast<int>(snake.head_y * 20)};
+  if (walls.CheckCollision(testing_cell)){
+    snake.alive = false;
+  }
   if (!snake.alive) return;
-
   snake.Update();
 
   int new_x = static_cast<int>(snake.head_x);
@@ -78,10 +87,31 @@ void Game::Update() {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
-    snake.GrowBody();
-    snake.speed += 0.02;
+    if (score == 3){
+      LevelUp();
+    } else {
+      snake.GrowBody();
+      snake.speed += 0.02;
+    }
   }
+}
+
+void Game::LevelUp()
+{
+  //This function will be called when the snake size increases to 15.
+  //I'll need to render a level up screen
+  //RenderScreen here;
+  level++;
+  if (level == 6){
+    running = false;
+    level = 5;//terminates the game and sets the level to 5 so it prints correctly.
+    std::cout << "GAME WON\n";
+    }
+  walls.UpdateLevel(level);
+  snake.UpdateLevel();
+  score = 0;
 }
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+int Game::GetLevel() const { return level; }
