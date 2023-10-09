@@ -1,5 +1,6 @@
 #include "game.h"
 #include <iostream>
+#include <unistd.h>
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
@@ -76,7 +77,12 @@ void Game::Update() {
   if (walls.CheckCollision(testing_cell)){
     snake.alive = false;
   }
-  if (!snake.alive) return;
+  if (!snake.alive) {
+    sleep(2);
+    running = false;
+    std::cout << "Game Over\n";
+    return;
+  }
   snake.Update();
 
   int new_x = static_cast<int>(snake.head_x);
@@ -105,7 +111,7 @@ void Game::LevelUp()
   if (level == 6){
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
-    std::cout << "GAME WON\n";
+    std::cout << "GAME WON!!!\n";
     }
   walls.UpdateLevel(level);
   snake.UpdateLevel();
