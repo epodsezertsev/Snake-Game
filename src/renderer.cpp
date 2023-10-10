@@ -99,8 +99,12 @@ void Renderer::StartScreen(Controller const &controller)
   
   int texW = 0;
   int texH = 0;
+
   SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-  SDL_Rect dstrect = {static_cast<int>(screen_width / grid_width), static_cast<int>(screen_height / grid_height), texW, texH};
+
+  int x = (screen_width - texW) / 2;
+  int y = (screen_height - texH) / 2;
+  SDL_Rect dstrect = {x, y, texW, texH};
   while (!Start){
     controller.HandleInput(Start);
     SDL_RenderCopy(sdl_renderer, texture, NULL, &dstrect);
