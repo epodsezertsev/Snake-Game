@@ -6,7 +6,7 @@
 
 #include "snake.h"
 #include "wall.h"
-#include "controller.h"
+//#include "controller.h"
 
 
 #include <vector>
@@ -19,12 +19,13 @@ class Renderer {
 
   void Render(Snake const snake, SDL_Point const &food, Walls &walls);
   void UpdateWindowTitle(int score, int fps, int level);
-  void StartScreen(Controller const &controller);
+  void StartScreen();
 
  private:
   SDL_Window *sdl_window;
   SDL_Renderer *sdl_renderer;
-  TTF_Font* font;
+  TTF_Font* titleFont;
+  TTF_Font* promptFont;
 
   const std::size_t screen_width;
   const std::size_t screen_height;

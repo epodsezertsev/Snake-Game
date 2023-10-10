@@ -23,7 +23,10 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   Uint32 frame_duration;
   int frame_count = 0;
   running = true;
-  renderer.StartScreen(controller);
+  while (!start) {
+    controller.HandleInput(start, running);
+    renderer.StartScreen();
+  }
   while (running) {
     frame_start = SDL_GetTicks();
 

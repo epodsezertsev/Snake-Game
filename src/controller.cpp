@@ -40,13 +40,14 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
   }
 }
 
-void Controller::HandleInput(bool &start) const {
+void Controller::HandleInput(bool &start, bool &running) const {
   SDL_Event event;
   while (SDL_PollEvent(&event)){
     if (event.type == SDL_KEYDOWN) {
       start = true;
-    // } else_if (event.type == SDL_Quit) {
-    //   // game.running = false;
+    } else if (event.type == SDL_QUIT) {
+      start = true;
+      running = false;
     }
   }
 }

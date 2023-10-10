@@ -37,12 +37,14 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "TTF_Error: " << TTF_GetError();
   }
 
-  font = TTF_OpenFont("../resources/Tuffy_Bold.ttf", 35);
+  titleFont = TTF_OpenFont("../resources/Tuffy_Bold.ttf", 60);
+  promptFont = TTF_OpenFont("../resources/Tuffy_Bold.ttf", 30);
 }
 
 Renderer::~Renderer() {
   SDL_DestroyWindow(sdl_window);
-  TTF_CloseFont(font);
+  TTF_CloseFont(titleFont);
+  TTF_CloseFont(promptFont);
   TTF_Quit();
   SDL_Quit();
 }
@@ -90,29 +92,37 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Walls &walls) {
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::StartScreen(Controller const &controller)
+void Renderer::StartScreen()
 {
-  bool Start {false};
-  SDL_Color color = { 255, 255, 255 };
-  SDL_Surface * surface = TTF_RenderText_Solid(font, "SNAKE", color);
-  SDL_Texture * texture = SDL_CreateTextureFromSurface(sdl_renderer, surface);
+  SDL_Color titleColor = {0, 251, 243};
+  SDL_Surface * titleSurface = TTF_RenderText_Solid(titleFont, "SNAKE", titleColor);
+  SDL_Surface * promptSurface = TTF_RenderText_Solid(promptFont, "Press any key to play..", titleColor);
+
+  SDL_Texture * titleTexture = SDL_CreateTextureFromSurface(sdl_renderer, titleSurface);
+  SDL_Texture * promptTexture = SDL_CreateTextureFromSurface(sdl_renderer, promptSurface);
   
-  int texW = 0;
-  int texH = 0;
+  int titleW = 0, titleH = 0, promptW = 0, promptH = 0;
 
-  SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+  SDL_QueryTexture(titleTexture, NULL, NULL, &titleW, &titleH);
+  SDL_QueryTexture(promptTexture, NULL, NULL, &promptW, &promptH);
 
-  int x = (screen_width - texW) / 2;
-  int y = (screen_height - texH) / 2;
-  SDL_Rect dstrect = {x, y, texW, texH};
-  while (!Start){
-    controller.HandleInput(Start);
-    SDL_RenderCopy(sdl_renderer, texture, NULL, &dstrect);
-    SDL_RenderPresent(sdl_renderer);
-  }
+  int titleX = (screen_width - titleW) / 2;
+  int titleY = (screen_height - titleH) / 3;
+  int promptX = (screen_width - promptW) / 2;
+  int promptY = (screen_height - promptH) / 2;
 
-  SDL_DestroyTexture(texture);
-  SDL_FreeSurface(surface);
+  SDL_Rect titleRect = {titleX, titleY, titleW, titleH};
+  SDL_Rect promptRect = {promptX, promptY, promptW, promptH};
+
+  SDL_RenderCopy(sdl_renderer, titleTexture, NULL, &titleRect);
+  SDL_RenderCopy(sdl_renderer, promptTexture, NULL, &promptRect);
+
+  SDL_RenderPresent(sdl_renderer);
+
+  SDL_DestroyTexture(titleTexture);
+  SDL_DestroyTexture(promptTexture);
+  SDL_FreeSurface(titleSurface);
+  SDL_FreeSurface(promptSurface);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps, int level) {

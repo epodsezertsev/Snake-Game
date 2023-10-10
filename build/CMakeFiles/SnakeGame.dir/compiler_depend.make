@@ -1378,7 +1378,6 @@ CMakeFiles/SnakeGame.dir/src/renderer.cpp.o: ../src/renderer.cpp \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../src/wall.h \
-  ../src/controller.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \

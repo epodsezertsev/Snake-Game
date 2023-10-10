@@ -23,6 +23,7 @@ class Game {
   Walls walls;
   SDL_Point food;
   bool running{false};
+  bool start {false};
 
   std::random_device dev;
   std::mt19937 engine;
