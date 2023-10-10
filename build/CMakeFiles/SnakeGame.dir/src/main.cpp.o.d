@@ -297,4 +297,5 @@ CMakeFiles/SnakeGame.dir/src/main.cpp.o: \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/renderer.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/wall.h

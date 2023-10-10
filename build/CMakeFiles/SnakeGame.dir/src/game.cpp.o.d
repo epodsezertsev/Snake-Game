@@ -279,6 +279,7 @@ CMakeFiles/SnakeGame.dir/src/game.cpp.o: \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/controller.h \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/snake.h \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/renderer.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  /home/therealdeeej/Documents/Udacity/CppND-Capstone-Snake-Game/src/wall.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/exception \

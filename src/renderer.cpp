@@ -31,10 +31,19 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "Renderer could not be created.\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
+
+  if (TTF_Init() < 0) {
+    std::cerr << "TTF could not initialize.\n";
+    std::cerr << "TTF_Error: " << TTF_GetError();
+  }
+
+  font = TTF_OpenFont("../resources/Tuffy_Bold.ttf", 35);
 }
 
 Renderer::~Renderer() {
   SDL_DestroyWindow(sdl_window);
+  TTF_CloseFont(font);
+  TTF_Quit();
   SDL_Quit();
 }
 
@@ -79,6 +88,27 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Walls &walls) {
 
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
+}
+
+void Renderer::StartScreen(Controller const &controller)
+{
+  bool Start {false};
+  SDL_Color color = { 255, 255, 255 };
+  SDL_Surface * surface = TTF_RenderText_Solid(font, "SNAKE", color);
+  SDL_Texture * texture = SDL_CreateTextureFromSurface(sdl_renderer, surface);
+  
+  int texW = 0;
+  int texH = 0;
+  SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+  SDL_Rect dstrect = {static_cast<int>(screen_width / grid_width), static_cast<int>(screen_height / grid_height), texW, texH};
+  while (!Start){
+    controller.HandleInput(Start);
+    SDL_RenderCopy(sdl_renderer, texture, NULL, &dstrect);
+    SDL_RenderPresent(sdl_renderer);
+  }
+
+  SDL_DestroyTexture(texture);
+  SDL_FreeSurface(surface);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps, int level) {

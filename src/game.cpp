@@ -1,7 +1,11 @@
 #include "game.h"
 #include <iostream>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
-#include "SDL.h"
+#endif
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -19,7 +23,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   Uint32 frame_duration;
   int frame_count = 0;
   running = true;
-
+  renderer.StartScreen(controller);
   while (running) {
     frame_start = SDL_GetTicks();
 
@@ -80,7 +84,7 @@ void Game::Update() {
   if (!snake.alive) {
     sleep(2);
     running = false;
-    std::cout << "Game Over\n";
+    std::cout << "Game Over :(\n";
     return;
   }
   snake.Update();

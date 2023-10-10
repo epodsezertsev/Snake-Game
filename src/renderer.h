@@ -1,10 +1,15 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <vector>
 #include "SDL.h"
+#include "SDL_ttf.h"
+
 #include "snake.h"
 #include "wall.h"
+#include "controller.h"
+
+
+#include <vector>
 
 class Renderer {
  public:
@@ -14,10 +19,12 @@ class Renderer {
 
   void Render(Snake const snake, SDL_Point const &food, Walls &walls);
   void UpdateWindowTitle(int score, int fps, int level);
+  void StartScreen(Controller const &controller);
 
  private:
   SDL_Window *sdl_window;
   SDL_Renderer *sdl_renderer;
+  TTF_Font* font;
 
   const std::size_t screen_width;
   const std::size_t screen_height;

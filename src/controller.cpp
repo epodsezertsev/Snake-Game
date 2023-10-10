@@ -1,7 +1,7 @@
 #include "controller.h"
 #include <iostream>
 #include "SDL.h"
-#include "snake.h"
+
 
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
                                  Snake::Direction opposite) const {
@@ -36,6 +36,17 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
                           Snake::Direction::kLeft);
           break;
       }
+    }
+  }
+}
+
+void Controller::HandleInput(bool &start) const {
+  SDL_Event event;
+  while (SDL_PollEvent(&event)){
+    if (event.type == SDL_KEYDOWN) {
+      start = true;
+    // } else_if (event.type == SDL_Quit) {
+    //   // game.running = false;
     }
   }
 }
