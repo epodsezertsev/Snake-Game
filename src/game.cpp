@@ -118,7 +118,8 @@ void Game::LevelUp(Renderer &renderer)
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
   } else {
-    renderer.LevelUp();
+    std::string levelstr = "Level Up!";
+    renderer.LevelUp(levelstr);
   }
   walls.UpdateLevel(level);
   snake.UpdateLevel();

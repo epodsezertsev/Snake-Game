@@ -124,9 +124,9 @@ void Renderer::StartScreen()
   SDL_FreeSurface(promptSurface);
 }
 
-void Renderer::LevelUp()
+void Renderer::LevelUp(std::string &str)
 {
-  SDL_Surface * levelSurface = TTF_RenderText_Solid(titleFont, "LEVEL UP", titleColor);
+  SDL_Surface * levelSurface = TTF_RenderText_Solid(titleFont, &str, titleColor);
   SDL_Texture * levelTexture = SDL_CreateTextureFromSurface(sdl_renderer, levelSurface);
 
   int levelW = 0, levelH = 0;

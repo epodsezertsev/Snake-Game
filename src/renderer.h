@@ -3,10 +3,11 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include <string>
 
 #include "snake.h"
 #include "wall.h"
-//#include "controller.h"
+
 
 
 #include <vector>
@@ -20,7 +21,7 @@ class Renderer {
   void Render(Snake const snake, SDL_Point const &food, Walls &walls);
   void UpdateWindowTitle(int score, int fps, int level);
   void StartScreen();
-  void LevelUp();
+  void LevelUp(std::string &string);
   // void GameWon();
   // void GameOver();
 
