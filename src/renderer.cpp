@@ -1,6 +1,6 @@
 #include "renderer.h"
 #include <iostream>
-#include <string>
+
 
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
@@ -94,7 +94,6 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Walls &walls) {
 
 void Renderer::StartScreen()
 {
-  SDL_Color titleColor = {0, 251, 243};
   SDL_Surface * titleSurface = TTF_RenderText_Solid(titleFont, "SNAKE", titleColor);
   SDL_Surface * promptSurface = TTF_RenderText_Solid(promptFont, "Press any key to play..", titleColor);
 
@@ -150,7 +149,7 @@ void Renderer::LevelUp()
 
 void Renderer::GameWon()
 {
-  SDL_Surface * wonSurface = TTF_RenderText_Solid(titleFont, "You won!", titleColor);
+  SDL_Surface * wonSurface = TTF_RenderText_Solid(titleFont, "You WIN!", titleColor);
   SDL_Texture * wonTexture = SDL_CreateTextureFromSurface(sdl_renderer, wonSurface);
 
   int wonW = 0, wonH = 0;

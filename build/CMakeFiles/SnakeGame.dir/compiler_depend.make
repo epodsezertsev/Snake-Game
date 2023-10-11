@@ -722,15 +722,7 @@ CMakeFiles/SnakeGame.dir/src/game.cpp.o: ../src/game.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h
+  /usr/include/c++/11/bits/istream.tcc
 
 CMakeFiles/SnakeGame.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -2171,14 +2163,6 @@ CMakeFiles/SnakeGame.dir/src/wall.cpp.o: ../src/wall.cpp \
 
 ../src/main.cpp:
 
-/usr/include/linux/close_range.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
 ../src/renderer.h:
 
 /usr/include/c++/11/bit:
@@ -2244,8 +2228,6 @@ CMakeFiles/SnakeGame.dir/src/wall.cpp.o: ../src/wall.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 ../src/wall.cpp:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
@@ -2405,8 +2387,6 @@ CMakeFiles/SnakeGame.dir/src/wall.cpp.o: ../src/wall.cpp \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
 
-/usr/include/unistd.h:
-
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/include/math.h:
@@ -2494,8 +2474,6 @@ CMakeFiles/SnakeGame.dir/src/wall.cpp.o: ../src/wall.cpp \
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
 
@@ -2894,8 +2872,6 @@ CMakeFiles/SnakeGame.dir/src/wall.cpp.o: ../src/wall.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
 

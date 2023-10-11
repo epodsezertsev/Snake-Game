@@ -8,6 +8,7 @@
 #include "snake.h"
 #include "wall.h"
 
+
 class Game {
  public:
   Game(std::size_t grid_width, std::size_t grid_height);

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 
+
 bool Walls::CheckCollision(SDL_Point &point)
 {
   for (auto wall : _walls) {

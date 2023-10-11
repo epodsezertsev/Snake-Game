@@ -1,11 +1,6 @@
 #include "game.h"
 #include <iostream>
 
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -26,7 +21,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   while (!start) {
     controller.HandleInput(start, running);
     renderer.StartScreen();
-  }
+  }//renders the start screen until a button is pressed
   while (running) {
     frame_start = SDL_GetTicks();
 
@@ -81,7 +76,7 @@ void Game::Update(Renderer &renderer) {
   SDL_Point testing_cell{
     static_cast<int>(snake.head_x * 20),
     static_cast<int>(snake.head_y * 20)};
-  if (walls.CheckCollision(testing_cell)){
+  if (walls.CheckCollision(testing_cell)){//returns true if snake collided with wall
     snake.alive = false;
   }
   if (!snake.alive) {
@@ -113,11 +108,11 @@ void Game::LevelUp(Renderer &renderer)
   //This function will be called when the snake size increases to 15.
   level++;
   if (level == 6){
-    renderer.GameWon();
+    renderer.GameWon();//renders the game won screen
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
   } else {
-    renderer.LevelUp();
+    renderer.LevelUp();//renders the level up message
   }
   walls.UpdateLevel(level);
   snake.UpdateLevel();

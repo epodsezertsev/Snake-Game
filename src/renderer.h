@@ -6,10 +6,9 @@
 
 #include "snake.h"
 #include "wall.h"
-//#include "controller.h"
-
 
 #include <vector>
+
 
 class Renderer {
  public:

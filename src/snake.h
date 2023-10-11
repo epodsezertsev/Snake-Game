@@ -4,6 +4,7 @@
 #include <vector>
 #include "SDL.h"
 
+
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };

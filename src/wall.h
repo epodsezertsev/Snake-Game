@@ -4,6 +4,7 @@
 #include <vector>
 #include "SDL.h"
 
+
 class Walls {
   public:
     //Walls(int level):_level(level){ PopulateVector(); };
