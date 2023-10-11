@@ -1,12 +1,23 @@
 # CPPND: Capstone Snake Game Example
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is my Capstone project for the Udacity C++ Nanodegree. The objective of the project was to add features to an existing snake game. The starter repo can be found [here](https://github.com/udacity/CppND-Capstone-Snake-Game).
 
 <img src="snake_game.gif"/>
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
+## Added Features
+* SDL rendered start screen - the game does not start until the user presses a button
+* Walls class - depending on the level, an obstacle is populated in the game screen. If the snake runs into this obstacle, the game stops.
+* Levels - there are 5 levels in the game and a level up screen is rendered between each one.
+* SDL rendered end game screen - the original version of the game never shut off. Now there is a screen that pops up when you beat the game or if you hit an obstacle. The game ends automatically after a short delay.
 
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+## Rubric Criteria (Must Meet Five)
+* The project demonstrates an understanding of C++ functions and control structures.
+* The project uses Object Oriented Programming techniques.
+* Classes use appropriate access specifiers for class members.
+* Classes abstract implementation details from their interfaces.
+* Classes encapsulate behavior.
+* The project makes use of references in function declarations.
+* The project uses destructors appropriately.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -22,6 +33,9 @@ In this project, you can build your own C++ application or extend this Snake gam
   * Linux: gcc / g++ is installed by default on most Linux distros
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
+* SDL2-TTF >= 2.0 (Font Rendering)
+  * Linux (Debian Based like Ubuntu): `sudo apt-get install libsdl2-image-dev`
+  * Windows and Mac OS: the repo link is [here](https://github.com/libsdl-org/SDL_ttf), and an excellent tutorial on how to run it [here](https://www.youtube.com/watch?v=GROeu4fL730&t=325s)
 
 ## Basic Build Instructions
 
