@@ -94,6 +94,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Walls &walls) {
 
 void Renderer::StartScreen()
 {
+  SDL_Color titleColor = {0, 251, 243};
   SDL_Surface * titleSurface = TTF_RenderText_Solid(titleFont, "SNAKE", titleColor);
   SDL_Surface * promptSurface = TTF_RenderText_Solid(promptFont, "Press any key to play..", titleColor);
 
@@ -122,29 +123,6 @@ void Renderer::StartScreen()
   SDL_DestroyTexture(promptTexture);
   SDL_FreeSurface(titleSurface);
   SDL_FreeSurface(promptSurface);
-}
-
-void Renderer::LevelUp(std::string &str)
-{
-  SDL_Surface * levelSurface = TTF_RenderText_Solid(titleFont, &str, titleColor);
-  SDL_Texture * levelTexture = SDL_CreateTextureFromSurface(sdl_renderer, levelSurface);
-
-  int levelW = 0, levelH = 0;
-
-  SDL_QueryTexture(levelTexture, NULL, NULL, &levelW, &levelH);
-
-  int levelX = (screen_width - levelW) / 2;
-  int levelY = (screen_height - levelH) / 2;
-
-  SDL_Rect levelRect = {levelX, levelY, levelW, levelH};
-
-  SDL_RenderCopy(sdl_renderer, levelTexture, NULL, &levelRect);
-  SDL_RenderPresent(sdl_renderer);
-
-  SDL_Delay(2000);
-
-  SDL_DestroyTexture(levelTexture);
-  SDL_FreeSurface(levelSurface);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps, int level) {
