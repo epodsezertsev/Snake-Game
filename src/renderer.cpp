@@ -94,6 +94,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Walls &walls) {
 
 void Renderer::StartScreen()
 {
+  SDL_Color titleColor = {0, 251, 243};
   SDL_Surface * titleSurface = TTF_RenderText_Solid(titleFont, "SNAKE", titleColor);
   SDL_Surface * promptSurface = TTF_RenderText_Solid(promptFont, "Press any key to play..", titleColor);
 

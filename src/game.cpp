@@ -100,7 +100,7 @@ void Game::Update(Renderer &renderer) {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
-    if (score == 1){
+    if (score == 3){
       LevelUp(renderer);
     } else {
       snake.GrowBody();
@@ -112,11 +112,14 @@ void Game::Update(Renderer &renderer) {
 void Game::LevelUp(Renderer &renderer)
 {
   //This function will be called when the snake size increases to 15.
+  //I'll need to render a level up screen
+  //RenderScreen here;
   level++;
   if (level == 6){
     renderer.GameWon();
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
+    std::cout << "GAME WON!!!\n";
   } else {
     renderer.LevelUp();
   }

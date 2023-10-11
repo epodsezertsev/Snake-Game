@@ -3,10 +3,11 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include <string>
 
 #include "snake.h"
 #include "wall.h"
-//#include "controller.h"
+
 
 
 #include <vector>
@@ -29,7 +30,6 @@ class Renderer {
   SDL_Renderer *sdl_renderer;
   TTF_Font* titleFont;
   TTF_Font* promptFont;
-  SDL_Color titleColor = {0, 251, 243};
 
   const std::size_t screen_width;
   const std::size_t screen_height;
