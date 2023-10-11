@@ -34,7 +34,7 @@ This is my Capstone project for the Udacity C++ Nanodegree. The objective of the
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 * SDL2-TTF >= 2.0 (Font Rendering)
-  * Linux (Debian Based like Ubuntu): `sudo apt-get install libsdl2-image-dev`
+  * Linux (Debian Based like Ubuntu): `sudo apt-get install libsdl2-ttf-dev`
   * Windows and Mac OS: the repo link is [here](https://github.com/libsdl-org/SDL_ttf), and an excellent tutorial on how to run it [here](https://www.youtube.com/watch?v=GROeu4fL730&t=325s)
 
 ## Basic Build Instructions
