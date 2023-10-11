@@ -16,7 +16,7 @@ class Game {
   int GetScore() const;
   int GetSize() const;
   int GetLevel() const;
-  void LevelUp();
+  void LevelUp(Renderer &renderer);
 
  private:
   Snake snake;
@@ -34,7 +34,7 @@ class Game {
   int level{1};
 
   void PlaceFood();
-  void Update();
+  void Update(Renderer &renderer);
 };
 
 #endif

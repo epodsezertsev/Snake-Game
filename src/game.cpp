@@ -32,7 +32,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
-    Update();
+    Update(renderer);
     renderer.Render(snake, food, walls);
 
     frame_end = SDL_GetTicks();
@@ -77,7 +77,7 @@ void Game::PlaceFood() {
   }
 }
 
-void Game::Update() {
+void Game::Update(Renderer &renderer) {
   SDL_Point testing_cell{
     static_cast<int>(snake.head_x * 20),
     static_cast<int>(snake.head_y * 20)};
@@ -100,8 +100,8 @@ void Game::Update() {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
-    if (score == 3){
-      LevelUp();
+    if (score == 1){
+      LevelUp(renderer);
     } else {
       snake.GrowBody();
       snake.speed += 0.02;
@@ -109,17 +109,17 @@ void Game::Update() {
   }
 }
 
-void Game::LevelUp()
+void Game::LevelUp(Renderer &renderer)
 {
   //This function will be called when the snake size increases to 15.
-  //I'll need to render a level up screen
-  //RenderScreen here;
   level++;
   if (level == 6){
+    //renderer.GameWon();
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
-    std::cout << "GAME WON!!!\n";
-    }
+  } else {
+    renderer.LevelUp();
+  }
   walls.UpdateLevel(level);
   snake.UpdateLevel();
   score = 0;
