@@ -114,7 +114,7 @@ void Game::LevelUp(Renderer &renderer)
   //This function will be called when the snake size increases to 15.
   level++;
   if (level == 6){
-    //renderer.GameWon();
+    renderer.GameWon();
     running = false;
     level = 5;//terminates the game and sets the level to 5 so it prints correctly.
   } else {

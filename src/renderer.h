@@ -21,7 +21,7 @@ class Renderer {
   void UpdateWindowTitle(int score, int fps, int level);
   void StartScreen();
   void LevelUp();
-  // void GameWon();
+  void GameWon();
   // void GameOver();
 
  private:

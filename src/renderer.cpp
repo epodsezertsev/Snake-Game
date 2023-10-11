@@ -126,7 +126,7 @@ void Renderer::StartScreen()
 
 void Renderer::LevelUp()
 {
-  SDL_Surface * levelSurface = TTF_RenderText_Solid(titleFont, "LEVEL UP", titleColor);
+  SDL_Surface * levelSurface = TTF_RenderText_Solid(titleFont, "LEVEL UP!", titleColor);
   SDL_Texture * levelTexture = SDL_CreateTextureFromSurface(sdl_renderer, levelSurface);
 
   int levelW = 0, levelH = 0;
@@ -145,6 +145,29 @@ void Renderer::LevelUp()
 
   SDL_DestroyTexture(levelTexture);
   SDL_FreeSurface(levelSurface);
+}
+
+void Renderer::GameWon()
+{
+  SDL_Surface * wonSurface = TTF_RenderText_Solid(titleFont, "You won!", titleColor);
+  SDL_Texture * wonTexture = SDL_CreateTextureFromSurface(sdl_renderer, wonSurface);
+
+  int wonW = 0, wonH = 0;
+
+  SDL_QueryTexture(wonTexture, NULL, NULL, &wonW, &wonH);
+
+  int wonX = (screen_width - wonW) / 2;
+  int wonY = (screen_height - wonH) / 2;
+
+  SDL_Rect wonRect = {wonX, wonY, wonW, wonH};
+
+  SDL_RenderCopy(sdl_renderer, wonTexture, NULL, &wonRect);
+  SDL_RenderPresent(sdl_renderer);
+
+  SDL_Delay(2000);
+
+  SDL_DestroyTexture(wonTexture);
+  SDL_FreeSurface(wonSurface);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps, int level) {
