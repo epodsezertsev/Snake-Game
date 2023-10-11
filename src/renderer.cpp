@@ -171,6 +171,29 @@ void Renderer::GameWon()
   SDL_FreeSurface(wonSurface);
 }
 
+void Renderer::GameOver()
+{
+  SDL_Surface * lostSurface = TTF_RenderText_Solid(titleFont, "GAME OVER :(", redColor);
+  SDL_Texture * lostTexture = SDL_CreateTextureFromSurface(sdl_renderer, lostSurface);
+
+  int lostW = 0, lostH = 0;
+
+  SDL_QueryTexture(lostTexture, NULL, NULL, &lostW, &lostH);
+
+  int lostX = (screen_width - lostW) / 2;
+  int lostY = (screen_height - lostH) / 2;
+
+  SDL_Rect lostRect = {lostX, lostY, lostW, lostH};
+
+  SDL_RenderCopy(sdl_renderer, lostTexture, NULL, &lostRect);
+  SDL_RenderPresent(sdl_renderer);
+
+  SDL_Delay(2000);
+
+  SDL_DestroyTexture(lostTexture);
+  SDL_FreeSurface(lostSurface);
+}
+
 void Renderer::UpdateWindowTitle(int score, int fps, int level) {
   std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps) + " Level: " + std::to_string(level)};
   SDL_SetWindowTitle(sdl_window, title.c_str());

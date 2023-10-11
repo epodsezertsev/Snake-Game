@@ -85,9 +85,8 @@ void Game::Update(Renderer &renderer) {
     snake.alive = false;
   }
   if (!snake.alive) {
-    sleep(2);
+    renderer.GameOver();
     running = false;
-    std::cout << "Game Over :(\n";
     return;
   }
   snake.Update();
@@ -100,7 +99,7 @@ void Game::Update(Renderer &renderer) {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
-    if (score == 1){
+    if (score == 15){
       LevelUp(renderer);
     } else {
       snake.GrowBody();

@@ -22,7 +22,7 @@ class Renderer {
   void StartScreen();
   void LevelUp();
   void GameWon();
-  // void GameOver();
+  void GameOver();
 
  private:
   SDL_Window *sdl_window;
@@ -30,6 +30,7 @@ class Renderer {
   TTF_Font* titleFont;
   TTF_Font* promptFont;
   SDL_Color titleColor = {0, 251, 243};
+  SDL_Color redColor = {255, 0, 0};
 
   const std::size_t screen_width;
   const std::size_t screen_height;
